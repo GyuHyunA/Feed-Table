@@ -4,6 +4,7 @@ import { Carousel } from "react-responsive-carousel";
 import { MainPageDummyList } from "../../../dummy/itemDummy";
 import { HomeStyle } from "../home-css/homestyle";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import InfoHome from "../info/info-hom";
 
 interface HProps {}
 

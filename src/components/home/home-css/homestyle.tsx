@@ -41,7 +41,7 @@ export const HomeStyle = styled.div`
     .indicator {
       display: flex;
       align-items: center;
-      .status{
+      .status {
         font-size: 24px;
         font-weight: 700;
         color: white;
@@ -55,4 +55,6 @@ export const HomeStyle = styled.div`
   }
 `;
 
-export const InfoHomeStyle = styled.div``;
+export const InfoHomeStyle = styled.div`
+  height: 100vh;
+`;

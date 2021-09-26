@@ -4,6 +4,9 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import Link from "next/link";
 import HomeMain from "../components/home/main/home-main";
 import ReactScrollWheelHandler from "react-scroll-wheel-handler";
+import InfoHome from "../components/home/info/info-hom";
+import { Dummylist } from "../dummy/itemDummy";
+import useInnerHeight from "../hook/use-innerHeight";
 
 const HomeStyle = styled.div`
   height: 100vh;
@@ -54,6 +57,30 @@ const HomeStyle = styled.div`
       }
     }
   }
+
+  .subnav-contain {
+    padding: 0 40px;
+    position: fixed;
+    top: 83px;
+    z-index: 1000;
+    width: 100%;
+    .subnav-wrap {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+    }
+    button {
+      width: 70px;
+      height: 30px;
+      border: 0;
+      background-color: rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+      span {
+        font-weight: 700;
+        color: white;
+      }
+    }
+  }
 `;
 
 const NavList = [
@@ -65,22 +92,46 @@ const NavList = [
   {
     text: "INTRODUCE",
     index: 1,
-    pageIndex: 1,
+    pageIndex: 1.5,
   },
   {
     text: "POST",
     index: 2,
-    pageIndex: 1,
+    pageIndex: 2.5,
   },
   {
     text: "GLOBAL",
     index: 3,
-    pageIndex: 2,
+    pageIndex: 3.5,
   },
 ];
 
+const SubNavList = [
+  { text: "메인 1", id: 0, pageIndex: 1 },
+  { text: "메인 2", id: 0, pageIndex: 1 },
+  { text: "메인 3", id: 0, pageIndex: 1 },
+];
+
 const Home = () => {
+  const innerHeight = useInnerHeight();
   const [pageIndex, setPageIndex] = useState<number>(0);
+
+  console.log(pageIndex);
+
+  const uphandle = () => {
+    if (pageIndex === 0) {
+      return;
+    } else {
+      setPageIndex(pageIndex - 1);
+    }
+  };
+  const downhandle = () => {
+    if (pageIndex === 3) {
+      return;
+    } else {
+      setPageIndex(pageIndex + 1);
+    }
+  };
 
   return (
     <HomeStyle>
@@ -103,8 +154,30 @@ const Home = () => {
           </div>
         </div>
       </header>
-      <ReactScrollWheelHandler>
+      <div className="subnav-contain">
+        <div className="subnav-wrap">
+          {SubNavList.map((v, i) => (
+            <button
+              className={`subnav-list`}
+              key={i}
+              onClick={() => setPageIndex(i)}
+            >
+              <span>{v.text}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+      <ReactScrollWheelHandler
+        style={{ top: pageIndex * -innerHeight }}
+        className="root-container"
+        upHandler={() => uphandle()}
+        downHandler={() => downhandle()}
+        timeout={500}
+      >
         <HomeMain />
+        {Dummylist.map((v, i) => (
+          <InfoHome title={v.title} subtitle={v.subtitle} img={v.img} key={i} />
+        ))}
       </ReactScrollWheelHandler>
     </HomeStyle>
   );
