@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import styled from "styled-components";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Link from "next/link";
@@ -81,6 +81,11 @@ const HomeStyle = styled.div`
       }
     }
   }
+  .root-container{
+    width: 100vw;
+    height: 100vh;
+    transition: .5s ease-in;
+  }
 `;
 
 const NavList = [
@@ -107,34 +112,30 @@ const NavList = [
 ];
 
 const SubNavList = [
-  { text: "메인 1", id: 0, pageIndex: 1 },
-  { text: "메인 2", id: 0, pageIndex: 1 },
-  { text: "메인 3", id: 0, pageIndex: 1 },
+  { text: "HOME", id: 1, pageIndex: 1 },
+  { text: "메인 1", id: 2, pageIndex: 2 },
+  { text: "메인 2", id: 3, pageIndex: 3 },
+  { text: "메인 3", id: 4, pageIndex: 4 },
 ];
 
 const Home = () => {
   const innerHeight = useInnerHeight();
   const [pageIndex, setPageIndex] = useState<number>(0);
+  const scrollRef = useRef<HTMLDivElement>(null)
 
   console.log(pageIndex);
 
   const uphandle = () => {
-    if (pageIndex === 0) {
-      return;
-    } else {
-      setPageIndex(pageIndex - 1);
-    }
+    if(pageIndex === 0) return;
+    setPageIndex(pageIndex - 1)
   };
   const downhandle = () => {
-    if (pageIndex === 3) {
-      return;
-    } else {
-      setPageIndex(pageIndex + 1);
-    }
+   if(pageIndex === SubNavList.length) return;
+   setPageIndex(pageIndex + 1)
   };
 
   return (
-    <HomeStyle>
+    <HomeStyle style={{ top: pageIndex * -innerHeight }}>
       <header className="home">
         <div className="header-wrap">
           <div className="nav-logo">
@@ -168,7 +169,6 @@ const Home = () => {
         </div>
       </div>
       <ReactScrollWheelHandler
-        style={{ top: pageIndex * -innerHeight }}
         className="root-container"
         upHandler={() => uphandle()}
         downHandler={() => downhandle()}
@@ -176,7 +176,9 @@ const Home = () => {
       >
         <HomeMain />
         {Dummylist.map((v, i) => (
-          <InfoHome title={v.title} subtitle={v.subtitle} img={v.img} key={i} />
+          <div className="scrollselct" ref={scrollRef}>
+            <InfoHome title={v.title} subtitle={v.subtitle} img={v.img} key={i} />
+          </div>
         ))}
       </ReactScrollWheelHandler>
     </HomeStyle>
