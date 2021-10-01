@@ -5,6 +5,7 @@ export const HomeStyle = styled.div`
   height: 100vh;
   left: 0;
   top: 0;
+  transition: .5s;
   /* 슬라이드 */
   .slide_wrap {
     height: 100vh;
@@ -34,7 +35,7 @@ export const HomeStyle = styled.div`
 
   /* 인디케이터 */
   .indicator-wrap {
-    position: fixed;
+    position: absolute;
     z-index: 10000;
     bottom: 40px;
     right: 50px;
@@ -55,6 +56,18 @@ export const HomeStyle = styled.div`
   }
 `;
 
-export const InfoHomeStyle = styled.div`
+export const HomeInfoStyle = styled.div`
+  width: 100vw;
   height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  .info-wrap {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    .title-wrap {
+      position: absolute;
+    }
+  }
 `;

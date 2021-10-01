@@ -1,12 +1,11 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Link from "next/link";
-import HomeMain from "../components/home/main/home-main";
 import ReactScrollWheelHandler from "react-scroll-wheel-handler";
-import InfoHome from "../components/home/info/info-hom";
 import { Dummylist } from "../dummy/itemDummy";
 import useInnerHeight from "../hook/use-innerHeight";
+import { HomeFooter, HomeInfo, HomeMain } from "../components/home";
 
 const HomeStyle = styled.div`
   height: 100vh;
@@ -81,60 +80,84 @@ const HomeStyle = styled.div`
       }
     }
   }
+  .root-container{
+    width: 100vw;
+    height: 100vh;
+    transition: .5s ease-in;
+  }
 `;
 
 const NavList = [
   {
+    id:"home",
     text: "HOME",
     index: 0,
     pageIndex: 0,
   },
   {
+    id:"introduce",
     text: "INTRODUCE",
     index: 1,
-    pageIndex: 1.5,
+    pageIndex: 1,
   },
   {
+    id:"post",
     text: "POST",
     index: 2,
-    pageIndex: 2.5,
+    pageIndex: 2,
   },
   {
+    id:"global",
     text: "GLOBAL",
     index: 3,
-    pageIndex: 3.5,
+    pageIndex: 3,
+  },
+  {
+    id:"etc",
+    text: "ETC",
+    index: 4,
+    pageIndex: 4,
+  },
+  {
+    id:"footer",
+    text: "FOOTER",
+    index: 5,
+    pageIndex: 4.5,
   },
 ];
 
 const SubNavList = [
-  { text: "메인 1", id: 0, pageIndex: 1 },
-  { text: "메인 2", id: 0, pageIndex: 1 },
-  { text: "메인 3", id: 0, pageIndex: 1 },
+  { text: "HOME", id: 1, pageIndex: 1 },
+  { text: "메인 1", id: 2, pageIndex: 2 },
+  { text: "메인 2", id: 3, pageIndex: 3 },
+  { text: "메인 3", id: 4, pageIndex: 4 },
 ];
 
 const Home = () => {
   const innerHeight = useInnerHeight();
   const [pageIndex, setPageIndex] = useState<number>(0);
+  const [pageId, setPageId] = useState<string>('home')
+  const scrollRef = useRef<HTMLDivElement>(null)
 
-  console.log(pageIndex);
+  console.log(NavList[NavList.find(v => v.id === pageId)!.index])
 
   const uphandle = () => {
-    if (pageIndex === 0) {
-      return;
-    } else {
-      setPageIndex(pageIndex - 1);
-    }
+    if(pageIndex === 0) return;
+    setPageId(NavList[NavList.find(v => v.id === pageId)!.index - 1].id)
+    setPageIndex(pageIndex - 1)
   };
   const downhandle = () => {
-    if (pageIndex === 3) {
-      return;
-    } else {
-      setPageIndex(pageIndex + 1);
-    }
+   if(pageIndex === 4.5) return;
+   setPageId(NavList[NavList.find(v => v.id === pageId)!.index + 1].id)
+   setPageIndex(pageIndex + 1)
   };
 
+  useEffect(() => {
+    setPageIndex( NavList.find(v => v.id === pageId)!.pageIndex)
+  }, [pageId])
+
   return (
-    <HomeStyle>
+    <HomeStyle style={{ top: pageIndex * -innerHeight }}>
       <header className="home">
         <div className="header-wrap">
           <div className="nav-logo">
@@ -144,7 +167,7 @@ const Home = () => {
           </div>
           <div className="nav-list">
             {NavList.map((value, index) => (
-              <span className="list-item" key={index}>
+              <span className="list-item" key={index} onClick={() => {setPageId(value.id)}}>
                 {value.text}
               </span>
             ))}
@@ -168,7 +191,6 @@ const Home = () => {
         </div>
       </div>
       <ReactScrollWheelHandler
-        style={{ top: pageIndex * -innerHeight }}
         className="root-container"
         upHandler={() => uphandle()}
         downHandler={() => downhandle()}
@@ -176,8 +198,11 @@ const Home = () => {
       >
         <HomeMain />
         {Dummylist.map((v, i) => (
-          <InfoHome title={v.title} subtitle={v.subtitle} img={v.img} key={i} />
+          <div className="scrollselct" ref={scrollRef} key={i}>
+            <HomeInfo title={v.title} subtitle={v.subtitle} img={v.img} key={i} />
+          </div>
         ))}
+        <HomeFooter/>
       </ReactScrollWheelHandler>
     </HomeStyle>
   );
