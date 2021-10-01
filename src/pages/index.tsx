@@ -19,6 +19,7 @@ const HomeStyle = styled.div`
     height: 80px;
     display: flex;
     align-items: center;
+    transition: 0.5s;
     /* 헤더 */
     .header-wrap {
       padding: 0 40px;
@@ -57,6 +58,14 @@ const HomeStyle = styled.div`
         }
       }
     }
+    &.home {
+      top: -83px;
+      opacity: 0;
+    }
+    &.none {
+      opacity: 1;
+      background-color: rgba(46, 46, 46, 0.5);
+    }
   }
 
   .subnav-contain {
@@ -82,46 +91,46 @@ const HomeStyle = styled.div`
       }
     }
   }
-  .root-container{
+  .root-container {
     width: 100vw;
     height: 100vh;
-    transition: .5s ease-in;
+    transition: 0.5s ease-in;
   }
 `;
 
 const NavList = [
   {
-    id:"home",
+    id: "home",
     text: "HOME",
     index: 0,
     pageIndex: 0,
   },
   {
-    id:"introduce",
+    id: "introduce",
     text: "INTRODUCE",
     index: 1,
     pageIndex: 1,
   },
   {
-    id:"post",
+    id: "post",
     text: "POST",
     index: 2,
     pageIndex: 2,
   },
   {
-    id:"global",
+    id: "global",
     text: "GLOBAL",
     index: 3,
     pageIndex: 3,
   },
   {
-    id:"etc",
+    id: "etc",
     text: "ETC",
     index: 4,
     pageIndex: 4,
   },
   {
-    id:"footer",
+    id: "footer",
     text: "FOOTER",
     index: 5,
     pageIndex: 4.3,
@@ -138,32 +147,43 @@ const SubNavList = [
 const Home = () => {
   const innerHeight = useInnerHeight();
   const [pageIndex, setPageIndex] = useState<number>(0);
-  const [pageId, setPageId] = useState<string>('home')
-  const scrollRef = useRef<HTMLDivElement>(null)
+  const [pageId, setPageId] = useState<string>("home");
+  const scrollRef = useRef<HTMLDivElement>(null);
 
-  const listFindPageId = NavList.find(v=>v.id === pageId)
+  const listFindPageId = NavList.find((v) => v.id === pageId);
 
   // console.log(listFindPageId!.index - 1);
   // console.log("pageIndex", pageIndex)
 
   const uphandle = () => {
-    if(pageIndex === 0) return;
-    setPageId(NavList[listFindPageId!.index - 1].id)
-    setPageIndex(pageIndex - 1)
+    if (pageIndex === 0) return;
+    setPageId(NavList[listFindPageId!.index - 1].id);
+    setPageIndex(pageIndex - 1);
   };
   const downhandle = () => {
-   if(pageIndex === 4.5) return;
-   setPageId(NavList[listFindPageId!.index + 1].id)
-   setPageIndex(pageIndex + 1)
+    if (pageIndex === 4.3) return;
+    setPageId(NavList[listFindPageId!.index + 1].id);
+    setPageIndex(pageIndex + 1);
   };
 
   useEffect(() => {
-    setPageIndex(listFindPageId!.pageIndex)
-  }, [pageId])
+    setPageIndex(listFindPageId!.pageIndex);
+  }, [pageId]);
 
   return (
     <HomeStyle style={{ top: pageIndex * -innerHeight }}>
-      <header className="home">
+      {pageIndex === 0 && (
+        <header>
+          <div className="header-wrap">
+            <div className="nav-logo">
+              <Link href="/">
+                <span className="logo">POST</span>
+              </Link>
+            </div>
+          </div>
+        </header>
+      )}
+      <header className={pageIndex === 0 ? "home" : "none"}>
         <div className="header-wrap">
           <div className="nav-logo">
             <Link href="/">
@@ -171,11 +191,20 @@ const Home = () => {
             </Link>
           </div>
           <div className="nav-list">
-            {NavList.map((value, index) => index <= 4 && (
-              <span className="list-item" key={index} onClick={() => {setPageId(value.id)}}>
-                {value.text}
-              </span>
-            ))}
+            {NavList.map(
+              (value, index) =>
+                index <= 4 && (
+                  <span
+                    className="list-item"
+                    key={index}
+                    onClick={() => {
+                      setPageId(value.id);
+                    }}
+                  >
+                    {value.text}
+                  </span>
+                )
+            )}
             <div className="hamburger">
               <GiHamburgerMenu className="icon" />
             </div>
@@ -191,10 +220,16 @@ const Home = () => {
         <HomeMain />
         {Dummylist.map((v, i) => (
           <div className="scrollselct" ref={scrollRef} key={i}>
-            <HomeInfo title={v.title} subtitle={v.subtitle} img={v.img} link={v.link} key={i} />
+            <HomeInfo
+              title={v.title}
+              subtitle={v.subtitle}
+              img={v.img}
+              link={v.link}
+              key={i}
+            />
           </div>
         ))}
-        <HomeFooter/>
+        <HomeFooter />
       </ReactScrollWheelHandler>
     </HomeStyle>
   );

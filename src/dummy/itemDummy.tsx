@@ -46,7 +46,7 @@ export const Dummylist = [
     title: "메인 4",
     subtitle: "메인서브 4",
     link: (
-      <a href="/test?p4" className="link4">
+      <a href="/etc?" className="link4">
         <span>링크4</span>
       </a>
     ),
