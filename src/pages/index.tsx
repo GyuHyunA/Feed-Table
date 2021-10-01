@@ -139,8 +139,6 @@ const Home = () => {
   const [pageId, setPageId] = useState<string>('home')
   const scrollRef = useRef<HTMLDivElement>(null)
 
-  console.log(NavList[NavList.find(v => v.id === pageId)!.index])
-
   const uphandle = () => {
     if(pageIndex === 0) return;
     setPageId(NavList[NavList.find(v => v.id === pageId)!.index - 1].id)
