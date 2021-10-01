@@ -4,7 +4,7 @@ import { Carousel } from "react-responsive-carousel";
 import { MainPageDummyList } from "../../../dummy/itemDummy";
 import { HomeStyle } from "../home-css/homestyle";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import InfoHome from "../info/info-hom";
+import InfoHome from "../info/home-info";
 
 interface HProps {}
 
@@ -49,7 +49,7 @@ const HomeMain = ({}: HProps) => {
         selectedItem={current}
       >
         {MainPageDummyList.map((v, i) => (
-          <div className="slide_wrap">
+          <div className="slide_wrap" key={i}>
             <img src={v.img} alt="" className="slide-img" />
             <div className="slide-contents">
               <div className="text-wrap">

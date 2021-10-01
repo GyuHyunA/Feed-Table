@@ -5,6 +5,7 @@ export const HomeStyle = styled.div`
   height: 100vh;
   left: 0;
   top: 0;
+  transition: .5s;
   /* 슬라이드 */
   .slide_wrap {
     height: 100vh;
@@ -55,7 +56,7 @@ export const HomeStyle = styled.div`
   }
 `;
 
-export const InfoHomeStyle = styled.div`
+export const HomeInfoStyle = styled.div`
   width: 100vw;
   height: 100vh;
   background-position: center;
