@@ -66,8 +66,17 @@ export const HomeInfoStyle = styled.div`
     width: 100%;
     height: 100%;
     position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 40px;
     .title-wrap {
       position: absolute;
+      font-size: 36px;
+      font-weight: 700;
+      color: white;
+      a{
+        color: lightcoral;
+      }
     }
   }
 `;

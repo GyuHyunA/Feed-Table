@@ -10,9 +10,11 @@ import { HomeFooter, HomeInfo, HomeMain } from "../components/home";
 const HomeStyle = styled.div`
   height: 100vh;
   position: fixed;
+  transition: 1.5s ease-in-out;
   header {
     position: fixed;
-    z-index: 1000000;
+    top: 0;
+    z-index: 10;
     width: 100%;
     height: 80px;
     display: flex;
@@ -122,7 +124,7 @@ const NavList = [
     id:"footer",
     text: "FOOTER",
     index: 5,
-    pageIndex: 4.5,
+    pageIndex: 4.3,
   },
 ];
 
@@ -139,19 +141,24 @@ const Home = () => {
   const [pageId, setPageId] = useState<string>('home')
   const scrollRef = useRef<HTMLDivElement>(null)
 
+  const listFindPageId = NavList.find(v=>v.id === pageId)
+
+  // console.log(listFindPageId!.index - 1);
+  // console.log("pageIndex", pageIndex)
+
   const uphandle = () => {
     if(pageIndex === 0) return;
-    setPageId(NavList[NavList.find(v => v.id === pageId)!.index - 1].id)
+    setPageId(NavList[listFindPageId!.index - 1].id)
     setPageIndex(pageIndex - 1)
   };
   const downhandle = () => {
    if(pageIndex === 4.5) return;
-   setPageId(NavList[NavList.find(v => v.id === pageId)!.index + 1].id)
+   setPageId(NavList[listFindPageId!.index + 1].id)
    setPageIndex(pageIndex + 1)
   };
 
   useEffect(() => {
-    setPageIndex( NavList.find(v => v.id === pageId)!.pageIndex)
+    setPageIndex(listFindPageId!.pageIndex)
   }, [pageId])
 
   return (
@@ -164,7 +171,7 @@ const Home = () => {
             </Link>
           </div>
           <div className="nav-list">
-            {NavList.map((value, index) => (
+            {NavList.map((value, index) => index <= 4 && (
               <span className="list-item" key={index} onClick={() => {setPageId(value.id)}}>
                 {value.text}
               </span>
@@ -175,19 +182,6 @@ const Home = () => {
           </div>
         </div>
       </header>
-      <div className="subnav-contain">
-        <div className="subnav-wrap">
-          {SubNavList.map((v, i) => (
-            <button
-              className={`subnav-list`}
-              key={i}
-              onClick={() => setPageIndex(i)}
-            >
-              <span>{v.text}</span>
-            </button>
-          ))}
-        </div>
-      </div>
       <ReactScrollWheelHandler
         className="root-container"
         upHandler={() => uphandle()}
@@ -197,7 +191,7 @@ const Home = () => {
         <HomeMain />
         {Dummylist.map((v, i) => (
           <div className="scrollselct" ref={scrollRef} key={i}>
-            <HomeInfo title={v.title} subtitle={v.subtitle} img={v.img} key={i} />
+            <HomeInfo title={v.title} subtitle={v.subtitle} img={v.img} link={v.link} key={i} />
           </div>
         ))}
         <HomeFooter/>
