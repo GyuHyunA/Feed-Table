@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
+
 html {
   text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -9,12 +11,6 @@ body {
   //   Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-family: "NanumGothicBold", sans-serif;
   font-size: 16px;
-}
-
-@font-face {
-  font-family: "NanumGothicBold";
-  font-weight: 500;
-  src: url("../font/NanumGothicBold.ttf");
 }
 
 a {

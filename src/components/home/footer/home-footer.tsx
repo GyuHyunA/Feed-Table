@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const HomeFooterStyle = styled.div`
-    height: 50vh;
+    height: 30vh;
     background-color: lightgray;
 `;
 
