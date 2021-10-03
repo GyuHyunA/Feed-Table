@@ -5,7 +5,7 @@ export const HomeStyle = styled.div`
   height: 100vh;
   left: 0;
   top: 0;
-  transition: .5s;
+  transition: 0.5s;
   /* 슬라이드 */
   .slide_wrap {
     height: 100vh;
@@ -74,9 +74,32 @@ export const HomeInfoStyle = styled.div`
       font-size: 36px;
       font-weight: 700;
       color: white;
-      a{
+      .link-wrap {
         color: lightcoral;
       }
+      .nextpage {
+        button {
+          position: absolute;
+          padding: 9px 20px;
+          border-radius: 5px;
+          border: 0;
+          background-color: #fdbdbd;
+          box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
+          transition: 0.5s;
+          cursor: pointer;
+          &:hover {
+            background-color: #ff5353;
+          }
+        }
+      }
     }
+    /* .btn-wrap{
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      
+    } */
   }
 `;

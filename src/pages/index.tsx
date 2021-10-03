@@ -7,6 +7,10 @@ import { Dummylist } from "../dummy/itemDummy";
 import useInnerHeight from "../hook/use-innerHeight";
 import { HomeFooter, HomeInfo, HomeMain } from "../components/home";
 
+interface IhomeStyle{
+
+}
+
 const HomeStyle = styled.div`
   height: 100vh;
   position: fixed;
@@ -20,6 +24,7 @@ const HomeStyle = styled.div`
     display: flex;
     align-items: center;
     transition: 0.5s;
+    transition-delay: 0.5s;
     /* 헤더 */
     .header-wrap {
       padding: 0 40px;
@@ -45,6 +50,9 @@ const HomeStyle = styled.div`
           font-weight: 700;
           cursor: pointer;
           color: white;
+          &.active{
+            color: #fdbdbd;
+          }
         }
         .hamburger {
           cursor: pointer;
@@ -124,8 +132,8 @@ const NavList = [
     pageIndex: 3,
   },
   {
-    id: "etc",
-    text: "ETC",
+    id: "mobile",
+    text: "MOBILE",
     index: 4,
     pageIndex: 4,
   },
@@ -158,12 +166,11 @@ const Home = () => {
   const uphandle = () => {
     if (pageIndex === 0) return;
     setPageId(NavList[listFindPageId!.index - 1].id);
-    setPageIndex(pageIndex - 1);
+
   };
   const downhandle = () => {
     if (pageIndex === 4.3) return;
     setPageId(NavList[listFindPageId!.index + 1].id);
-    setPageIndex(pageIndex + 1);
   };
 
   useEffect(() => {
@@ -195,7 +202,7 @@ const Home = () => {
               (value, index) =>
                 index <= 4 && (
                   <span
-                    className="list-item"
+                    className={`list-item ${pageIndex === index ? "active" : ""}`}
                     key={index}
                     onClick={() => {
                       setPageId(value.id);
@@ -226,6 +233,7 @@ const Home = () => {
               img={v.img}
               link={v.link}
               key={i}
+              pageIndex={pageIndex}
             />
           </div>
         ))}
