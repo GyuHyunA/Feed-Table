@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Link from "next/link";
 import ReactScrollWheelHandler from "react-scroll-wheel-handler";
-import { DetailHome, DetailIntro, DetailPc } from "../../components/detail";
+import { DetailHome, DetailIntro, DetailMobile, DetailPc } from "../../components/detail";
 import useInnerHeight from "../../hook/use-innerHeight";
 import router from "next/router";
 
@@ -100,10 +100,10 @@ const DetailsPage = () => {
   }
 
   useEffect(() => {
-    if(pageIndex === 0 && 0.5){
+    if(pageIndex === 0 || pageIndex === 0.5){
       router.replace(`/detail`)
     } else {
-      router.replace(`/detail?=${pageIndex}`)
+      router.replace(`/detail?link=${pageIndex}`)
     }
   }, [pageIndex])
 
@@ -151,6 +151,7 @@ const DetailsPage = () => {
         <DetailHome />
         <DetailIntro />
         <DetailPc/>
+        <DetailMobile/>
       </ReactScrollWheelHandler>
     </DetailsPageStyle>
   );
