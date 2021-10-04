@@ -6,6 +6,13 @@ import ReactScrollWheelHandler from "react-scroll-wheel-handler";
 import { DetailHome, DetailIntro, DetailMobile, DetailPc } from "../../components/detail";
 import useInnerHeight from "../../hook/use-innerHeight";
 import router from "next/router";
+import { GetServerSideProps } from "next";
+
+interface IDetailPage{
+query:{
+  link:string
+}
+}
 
 const DetailsPageStyle = styled.div`
   height: 100vh;
@@ -13,6 +20,7 @@ const DetailsPageStyle = styled.div`
   transition: 0.5s;
   header {
     position: fixed;
+    top: 0;
     z-index: 10;
     width: 100%;
     height: 80px;
@@ -69,12 +77,12 @@ const DetailsPageStyle = styled.div`
   }
 `;
 
-const DetailsPage = () => {
+const DetailsPage = ({query}:IDetailPage) => {
   const innerHeight = useInnerHeight();
-  const [pageIndex, setPageIndex] = useState<number>(0);
-  const [pageId, setPageId] = useState<string>("home");
+  const [pageIndex, setPageIndex] = useState<number>(query.link ? Number(query.link) : 0);
+  const [pageId, setPageId] = useState<string>(query.link);
 
-  const listFindPageId = DetailsNavList.find((v) => v.id === pageId)!;
+  // const listFindPageId = DetailsNavList.find((v) => v.id === pageId)!;
 
   const uphandle =() => {
     if (pageIndex === 0) return
@@ -107,8 +115,6 @@ const DetailsPage = () => {
     }
   }, [pageIndex])
 
-  console.log(pageIndex)
-
   return (
     <DetailsPageStyle style={{ top : -innerHeight * pageIndex }}>
       <header className={pageIndex === 0 ? "home" : "none"}>
@@ -128,7 +134,7 @@ const DetailsPage = () => {
                     }`}
                     key={index}
                     onClick={() => {
-                      setPageId(value.id);
+                      setPageIndex(value.pageIndex);
                     }}
                   >
                     {value.text}
@@ -185,3 +191,11 @@ const DetailsNavList = [
     index: 3,
   },
 ];
+
+export const getServerSideProps: GetServerSideProps = async ({
+  query,
+}) => {
+  return {
+    props: { query },
+  }
+}
