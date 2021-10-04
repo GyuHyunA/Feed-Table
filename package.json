@@ -5,16 +5,27 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "set PORT=5000 && next start",
+    "test": "next lint"
   },
   "dependencies": {
+    "@types/lodash": "^4.14.174",
+    "@types/styled-components": "^5.1.14",
+    "lodash": "^4.17.21",
     "next": "11.1.2",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-icons": "^4.2.0",
+    "react-responsive-carousel": "^3.2.21",
+    "react-scroll-wheel-handler": "^2.1.0",
+    "react-slick": "^0.28.1",
+    "sass": "^1.42.1",
+    "styled-components": "^5.3.1",
+    "swiper": "^7.0.6"
   },
   "devDependencies": {
     "@types/react": "17.0.24",
+    "@types/react-slick": "^0.23.5",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.2",
     "typescript": "4.4.3"
