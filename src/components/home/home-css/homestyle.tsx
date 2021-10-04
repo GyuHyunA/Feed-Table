@@ -77,19 +77,17 @@ export const HomeInfoStyle = styled.div`
       .link-wrap {
         color: lightcoral;
       }
-      .nextpage {
-        button {
-          position: absolute;
-          padding: 9px 20px;
-          border-radius: 5px;
-          border: 0;
-          background-color: #fdbdbd;
-          box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
-          transition: 0.5s;
-          cursor: pointer;
-          &:hover {
-            background-color: #ff5353;
-          }
+      button {
+        position: absolute;
+        padding: 9px 20px;
+        border-radius: 5px;
+        border: 0;
+        background-color: #fdbdbd;
+        box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
+        transition: 0.5s;
+        cursor: pointer;
+        &:hover {
+          background-color: #ff5353;
         }
       }
     }

@@ -1,5 +1,6 @@
 import React from "react";
 import { HomeInfoStyle } from "../home-css/homestyle";
+import Link from "next/link"
 
 interface InfoProps {
   title: string;
@@ -16,7 +17,7 @@ const HomeInfo = ({ title, subtitle, img, link, pageIndex }: InfoProps) => {
           <p className="title">{title}</p>
           <p className="subtitle">{subtitle}</p>
           {link}
-          <a href={`${pageIndex === 3 && 4 ? "ready" :"/detail?link=1"}`} className="nextpage">
+          <a href={`${pageIndex === 3 && 4 ? "ready" :"/detail?link=" + pageIndex}`} >
             <button>다음장으로</button>
           </a>
         </div>
