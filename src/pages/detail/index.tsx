@@ -17,7 +17,7 @@ query:{
 const DetailsPageStyle = styled.div`
   height: 100vh;
   position: fixed;
-  transition: 0.5s;
+  transition: 1.5s;
   header {
     position: fixed;
     top: 0;
