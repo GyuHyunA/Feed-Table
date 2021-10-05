@@ -41,7 +41,7 @@ export const DetailMobileStyle = styled.div`
   .btn-contain {
       width: 100%;
       position: absolute;
-      top: 0;
+      bottom: 0;
       display: flex;
       justify-content: center;
     }

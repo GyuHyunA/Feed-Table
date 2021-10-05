@@ -17,7 +17,7 @@ const HomeInfo = ({ title, subtitle, img, link, pageIndex }: InfoProps) => {
           <p className="title">{title}</p>
           <p className="subtitle">{subtitle}</p>
           {link}
-          <a href={`${pageIndex === 3 && 4 ? "ready" :"/detail?link=" + pageIndex}`} >
+          <a href={`${pageIndex === 3 || pageIndex === 4 ? "ready" :"/detail?link=" + pageIndex}`} >
             <button>다음장으로</button>
           </a>
         </div>
