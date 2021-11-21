@@ -72,7 +72,7 @@ const Home = () => {
                 <p>더 알아보기</p>
               </a>
             </Link>
-            <Link href="#">
+            <Link href="/video">
               <a>
                 <p>영상 편집자로서</p>
                 <p>더 알아보기</p>

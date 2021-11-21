@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import NavBar from '../../components/front/nav/navbar'
+import { FrontAbout, FrontHome, NavBar } from '../../components'
+
 
 const FrontPageStyle = styled.div`
 
@@ -10,6 +11,8 @@ const FrontPage = () => {
     return (
         <FrontPageStyle>
             <NavBar/>
+            <FrontHome/>
+            <FrontAbout/>
         </FrontPageStyle>
     )
 }
