@@ -31,21 +31,22 @@ const HomeStyle = styled.div`
   .link-wrap {
     display: flex;
     justify-content: center;
-    a{
-      background-color:#c5c5c5;
+    a {
       font-size: 18px;
-      width: 138px;
-      height: 41px;
+      width: 164px;
       border-radius: 10px;
-      p:nth-child(1){
+      background-color: #c5c5c5;
+      padding: 10px 0;
+      padding-left: 13px;
+      p:nth-child(1) {
         font-size: 18px;
-        font-weight:bold;
+        font-weight: bold;
       }
-      p:nth-child(2){
+      p:nth-child(2) {
         font-size: 8px;
       }
     }
-    a:nth-child(1){
+    a:nth-child(1) {
       margin-right: 12px;
     }
   }
@@ -59,20 +60,19 @@ const Home = () => {
           <div className="text-wrap">
             <h2>
               안녕하세요 <br />
-              제한없는 경험을 나아가는
-              <br />
-              <span>Leemit입니다</span>
+              끝없이 달려나가는<br />
+              <span> Leemit입니다 </span>
               <br />
             </h2>
           </div>
           <div className="link-wrap">
-            <Link href="">
+            <Link href="/front">
               <a>
                 <p>프론트 개발자로서</p>
                 <p>더 알아보기</p>
               </a>
             </Link>
-            <Link href="">
+            <Link href="/video">
               <a>
                 <p>영상 편집자로서</p>
                 <p>더 알아보기</p>
