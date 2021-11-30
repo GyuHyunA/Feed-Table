@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const NavBarStyle = styled.div`
+export const VideoNavBarStyle = styled.div`
     position: fixed;
     width: 100%;
     height: 72px;

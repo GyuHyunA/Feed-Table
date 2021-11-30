@@ -1,5 +1,5 @@
 import React from "react";
-import { NavBarStyle } from "./navstyle";
+import { VideoNavBarStyle } from "./navstyle";
 import Link from "next/link";
 
 const list = [
@@ -20,9 +20,9 @@ const list = [
     name: "copyright",
   },
 ];
-const NavBar = () => {
+const VideoNavBar = () => {
   return (
-    <NavBarStyle>
+    <VideoNavBarStyle>
       <div className="logo-wrap">
         <Link href="/">
           <a>
@@ -41,8 +41,8 @@ const NavBar = () => {
           ))}
         </ul>
       </div>
-    </NavBarStyle>
+    </VideoNavBarStyle>
   );
 };
 
-export default NavBar;
+export default VideoNavBar;
