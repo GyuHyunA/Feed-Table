@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Link from "next/link";
+import MainProfile from "../components/main/main-profile/main-profile";
 
 interface IhomeStyle {}
 
@@ -54,34 +55,24 @@ const HomeStyle = styled.div`
 
 const Home = () => {
   return (
-    <HomeStyle>
-      <div className="contain">
-        <div className="align-wrap">
-          <div className="text-wrap">
-            <h2>
-              안녕하세요 <br />
-              끝없이 달려나가는<br />
-              <span> Leemit입니다 </span>
-              <br />
-            </h2>
-          </div>
-          <div className="link-wrap">
-            <Link href="/front">
-              <a>
-                <p>프론트 개발자로서</p>
-                <p>더 알아보기</p>
-              </a>
-            </Link>
-            <Link href="/video">
-              <a>
-                <p>영상 편집자로서</p>
-                <p>더 알아보기</p>
-              </a>
-            </Link>
+    <>
+      <HomeStyle>
+        <div className="contain">
+          <div className="align-wrap">
+            <div className="text-wrap">
+              <h2>
+                안녕하세요 <br />
+                끝없이 달려나가는
+                <br />
+                <span> Leemit입니다 </span>
+                <br />
+              </h2>
+            </div>
           </div>
         </div>
-      </div>
-    </HomeStyle>
+      </HomeStyle>
+      <MainProfile />
+    </>
   );
 };
 
