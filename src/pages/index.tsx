@@ -2,7 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Link from "next/link";
-import MainProfile from "../components/main/main-profile/main-profile";
+import { MainProfile } from "../components";
+
 
 interface IhomeStyle {}
 
