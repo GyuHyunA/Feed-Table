@@ -4,21 +4,13 @@ import { VideoStyle } from "./videostyle";
 const VideoAbout = () => {
   return (
     <VideoStyle>
-      <div className="title-wrap">
-        <div className="title">
-          <h2>
-            About
-            <br />
-            Me
-          </h2>
+      <div className="skill-contain">
+        <div className="title-wrap">
+          <h2>SKILL</h2>
         </div>
-      </div>
-      <div className="profile-wrap">
-          <div className="name">
-              <h2></h2>
-              <p></p>
-          </div>
-          div.
+        <div className="Skill-box">
+          
+        </div>
       </div>
     </VideoStyle>
   );

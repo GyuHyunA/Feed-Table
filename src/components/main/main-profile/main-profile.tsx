@@ -37,8 +37,8 @@ const MainProfile = () => {
               <div className="fb-img"></div>
               <div className="fb-title">프론트 개발자로서</div>
               <div className="fb-btn">
-                <Link href="">
-                  <a href="">
+                <Link href="/front">
+                  <a>
                     <span>더 알아보기</span>
                   </a>
                 </Link>
@@ -48,8 +48,8 @@ const MainProfile = () => {
               <div className="vb-img"></div>
               <div className="vb-title">영상 편집자로서</div>
               <div className="vb-btn">
-                <Link href="">
-                  <a href="">
+                <Link href="/video">
+                  <a>
                     <span>더 알아보기</span>
                   </a>
                 </Link>

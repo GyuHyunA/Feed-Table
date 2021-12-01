@@ -5,18 +5,18 @@ import Link from "next/link";
 const list = [
   {
     id: "home",
-    name: "home",
-  },
-  {
-    id: "about",
-    name: "About Me",
+    name: "Home",
   },
   {
     id: "skill",
     name: "Skill",
   },
   {
-    id: "copyright",
+    id: "Project",
+    name: "Project",
+  },
+  {
+    id: "footer",
     name: "copyright",
   },
 ];
