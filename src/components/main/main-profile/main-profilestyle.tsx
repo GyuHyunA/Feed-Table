@@ -29,7 +29,7 @@ export const MainProfileStyle = styled.div`
       width: 100%;
       height: calc(100% - 200px);
       display: flex;
-      /* justify-content: space-between; */
+      justify-content: space-between;
       align-items: center;
       .profile-wrap {
         display: flex;

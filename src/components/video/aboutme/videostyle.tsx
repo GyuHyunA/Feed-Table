@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 export const VideoStyle = styled.div`
-    height: calc(100vh - 400px);
+    height: 100vh;
     width: 100%;
 
-    display: flex;
 `
