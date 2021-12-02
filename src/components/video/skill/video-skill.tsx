@@ -1,9 +1,9 @@
 import React from "react";
-import { VideoStyle } from "./videostyle";
+import { VideoSkillStyle } from "./videoskillstyle";
 
 const VideoAbout = () => {
   return (
-    <VideoStyle>
+    <VideoSkillStyle>
       <div className="skill-contain">
         <div className="title-wrap">
           <h2>SKILL</h2>
@@ -12,7 +12,7 @@ const VideoAbout = () => {
           
         </div>
       </div>
-    </VideoStyle>
+    </VideoSkillStyle>
   );
 };
 
