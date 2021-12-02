@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { VideoAbout, VideoHome, VideoNavBar } from '../../components'
+import { VideoSkill, VideoHome, VideoNavBar } from '../../components'
 
 const VideoPageStyle = styled.div`
 
@@ -11,7 +11,7 @@ const VideoPage = () => {
         <VideoPageStyle>
             <VideoNavBar/>
             <VideoHome/>
-            <VideoAbout/>
+            <VideoSkill/>
         </VideoPageStyle>
     )
 }
